@@ -23,7 +23,7 @@
         <a class="nav-link" href="<c:url value='/login/' />">Login</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Track</a>
+        <a class="nav-link" href="<c:url value='/track/' />">Track</a>
       </li>
     </ul>
   </div>

@@ -62,6 +62,14 @@ public class UserServiceImpl implements UserService{
 		    }
 		}
 	}
+	
+	public boolean isAdmin(User user) {
+		if("oscar".equals(user.getUsername())){
+			return true;
+		}else {
+			return false;
+		}
+	}
 
 	public boolean isUserExist(User user) {
 		return findByName(user.getUsername())!=null;

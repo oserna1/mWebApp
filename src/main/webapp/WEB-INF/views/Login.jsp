@@ -1,21 +1,24 @@
 <%@ include file = "header.jsp" %>
- <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>   
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>   
 <body>
 
 
-	<div class="container col-md-4 col-md-offset-4" style="margin-top:5% ">
-	  <form:form commandName="user" method="POST" class="px-4 py-3">
+	<div class="container col-md-4 col-md-offset-4" style="margin-top:5%">
+	  <form:form commandName="user" method="POST" class="px-4 py-3" action="/mWebApp/validateCreate">
 	  	<div class="form-group">
 	      <label for="exampleDropdownFormUsername">Username</label>
 	      <form:input path="username" name="username" type="text" class="form-control" id="exampleDropdownFormUsername" placeholder="Username"/>
+	      <form:errors path="username" />
 	    </div>
 	    <div class="form-group">
 	      <label for="exampleDropdownFormEmail1">Email</label>
 	      <form:input path="email" name="email" type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com"/>
+	      <form:errors path="email"/>
 	    </div>
 	    <div class="form-group">
 	      <label for="exampleDropdownFormPassword1">Password</label>
-	      <input path="password" name="password" type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password"/>
+	      <form:input path="password" name="password" type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password"/>
+	      <form:errors path="password" cssClass="error" />
 	    </div>
 	    <div class="form-group">
 	      <div class="form-check">

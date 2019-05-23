@@ -15,23 +15,24 @@
 	    self.reset = reset;
 	
 	
-	    /*fetchAllUsers();
+	    fetchAllUsers();
 	
 	    function fetchAllUsers(){
 	        UserService.fetchAllUsers()
 	            .then(
 	            function(d) {
-	                self.users = d;
+	                self.users = d.data;
 	            },
 	            function(errResponse){
 	                console.error('Error while fetching Users');
 	            }
 	        );
-	    } */
+	    } 
 	
 	    function createUser(user){
 	        UserService.createUser(user)
 	            .then(
+	            fetchAllUsers,
 	            function(errResponse){
 	                console.error('Error while creating User');
 	            }
@@ -41,6 +42,7 @@
 	    function updateUser(user, id){
 	        UserService.updateUser(user, id)
 	            .then(
+	            fetchAllUsers,
 	            function(errResponse){
 	                console.error('Error while updating User');
 	            }

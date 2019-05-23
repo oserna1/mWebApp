@@ -21,5 +21,7 @@ public interface UserService {
 	void deleteAllUsers();
 	
 	public boolean isUserExist(User user);
+	
+	public boolean isAdmin(User user);
 
 }

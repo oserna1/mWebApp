@@ -1,5 +1,7 @@
 package com.mWebApp.model;
 
+import java.util.Set;
+
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
@@ -15,8 +17,9 @@ public class User {
 		@Size(min=5, max=15) @NotEmpty
 		private String password;
 		
-		
 		private String username;
+		
+		Set<Mood> mood_Set;
 		
 		public User(){
 			id=0;
@@ -86,6 +89,14 @@ public class User {
 
 		public void setUsername(String username) {
 			this.username = username;
+		}
+
+		public Set<Mood> getMood_Set() {
+			return mood_Set;
+		}
+
+		public void setMood_Set(Set<Mood> mood_Set) {
+			this.mood_Set = mood_Set;
 		}
 		
 

@@ -6,5 +6,7 @@
       <script src="<c:url value='/static/js/app.js' />"></script>
       <script src="<c:url value='/static/js/service/user_service_admin.js' />"></script>
       <script src="<c:url value='/static/js/controller/user_controller.js' />"></script>
+      <script src="<c:url value='/static/js/service/mood_service.js' />"></script>
+      <script src="<c:url value='/static/js/controller/mood_controller.js' />"></script>
   
 </html>

@@ -12,15 +12,18 @@ public class Mood {
 	
 	private Timestamp ts;
 	
+	private Long uId;
+	
 	public Mood() {
 		id=0;
 	}
 	
-	public Mood(long id, int moodRange, String description, Timestamp ts) {
+	public Mood(long id, int moodRange, String description, Timestamp ts, Long uId) {
 		this.id = id;
 		this.moodRange = moodRange;
 		this.description = description;
 		this.ts = ts;
+		this.uId = uId;
 	}
 
 	public long getId() {
@@ -53,6 +56,14 @@ public class Mood {
 
 	public void setTs(Timestamp ts) {
 		this.ts = ts;
+	}
+
+	public Long getuId() {
+		return uId;
+	}
+
+	public void setuId(Long uId) {
+		this.uId = uId;
 	}
 
 

@@ -1,17 +1,25 @@
 package com.mWebApp.service;
 
 import java.security.Timestamp;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
+import org.springframework.stereotype.Service;
+
 import com.mWebApp.model.Mood;
 
+@Service
 public class MoodServiceImpl  implements MoodService{
 	
 	private static final AtomicLong counter = new AtomicLong();
 	
-	public List<Mood> moods;
+	private static List<Mood> moods;
+	
+	static{
+		moods = populateDummyMoods();
+	}
 	
 	public List<Mood> findAllMoods() {
 		return moods;	
@@ -62,5 +70,29 @@ public class MoodServiceImpl  implements MoodService{
 	public void deleteAllMoods(){
 		moods.clear();
 	}
+	
+	public List<Mood> findByUid(long id) {
+		List<Mood> MoodsUid = new ArrayList<Mood>();
+		for(Mood mood: moods) {
+			if(mood.getuId()==id) {
+				MoodsUid.add(mood);
+			}
+		}
+		return MoodsUid;
+	}
+	
+	private static List<Mood> populateDummyMoods(){
+		List<Mood> moods = new ArrayList<Mood>();
+		moods.add(new Mood(counter.incrementAndGet(),4, "alright", null, (long) 2 ));
+		moods.add(new Mood(counter.incrementAndGet(),0, "depressed", null, (long) 1));
+		moods.add(new Mood(counter.incrementAndGet(),9, "happy", null, (long) 3));
+		moods.add(new Mood(counter.incrementAndGet(),9, "happy", null, (long) 3));
+		moods.add(new Mood(counter.incrementAndGet(),7, "aight", null, (long) 3));
+		moods.add(new Mood(counter.incrementAndGet(),5, "meh", null, (long) 3));
+		moods.add(new Mood(counter.incrementAndGet(),5, "meh", null, (long) 2));
+		moods.add(new Mood(counter.incrementAndGet(),5, "meh", null, (long) 1));
+		return moods;
+	}
+
 
 }

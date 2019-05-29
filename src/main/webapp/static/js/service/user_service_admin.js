@@ -10,10 +10,13 @@
 				createUser: createUser,
 				updateUser: updateUser,
 				fetchAllUsers: fetchAllUsers,
-				deleteUser: deleteUser
+				deleteUser: deleteUser,
+				uId:uId
 		};
 
 		return factory;
+		
+		var uId;
 
 		function createUser(user) {
 			return $http.post(REST_SERVICE_URI, user);

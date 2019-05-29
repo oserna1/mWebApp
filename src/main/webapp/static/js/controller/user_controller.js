@@ -3,8 +3,8 @@
 	'use strict';
 
 	angular.module('myApp').controller('UserController',UserController); 
-	UserController.$inject = ['$scope', 'UserService'];
-	function UserController ($scope, UserService) {
+	UserController.$inject = ['UserService'];
+	function UserController (UserService) {
 	    var self = this;
 	    self.user={id:null,username:'',email:'', password:''};
 	    self.users=[];
@@ -13,6 +13,7 @@
 	    self.edit = edit;
 	    self.remove = remove;
 	    self.reset = reset;
+	    self.selectedId = selectedId;
 	
 	
 	    fetchAllUsers();
@@ -37,6 +38,11 @@
 	                console.error('Error while creating User');
 	            }
 	        );
+	    }
+	    
+	    function selectedId(id){
+	    	console.log("selected user id is: ", id);
+	    	UserService.uId = id;
 	    }
 	
 	    function updateUser(user, id){
@@ -91,7 +97,7 @@
 	
 	    function reset(){
 	        self.user={id:null,username:'',email:'',password:''};
-	        $scope.myForm.$setPristine(); //reset Form
+	        myForm.$setPristine(); //reset Form
 	    }
 	}
 })();

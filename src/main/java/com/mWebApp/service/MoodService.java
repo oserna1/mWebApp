@@ -18,6 +18,8 @@ public interface MoodService {
 
 	List<Mood> findAllMoods(); 
 	
+	List<Mood> findByUid(long id);
+	
 	void deleteAllMoods();
 	
 	public boolean isMoodExist(Mood	mood);

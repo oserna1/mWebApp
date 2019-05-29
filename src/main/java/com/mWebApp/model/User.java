@@ -1,5 +1,6 @@
 package com.mWebApp.model;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.validation.constraints.Size;
@@ -19,7 +20,7 @@ public class User {
 		
 		private String username;
 		
-		Set<Mood> mood_Set;
+		List<Mood> mood_List;
 		
 		public User(){
 			id=0;
@@ -91,12 +92,12 @@ public class User {
 			this.username = username;
 		}
 
-		public Set<Mood> getMood_Set() {
-			return mood_Set;
+		public List<Mood> getMood_Set() {
+			return mood_List;
 		}
 
-		public void setMood_Set(Set<Mood> mood_Set) {
-			this.mood_Set = mood_Set;
+		public void setMood_List(List<Mood> mood_List) {
+			this.mood_List = mood_List;
 		}
 		
 

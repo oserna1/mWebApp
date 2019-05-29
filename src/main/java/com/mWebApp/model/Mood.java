@@ -1,6 +1,6 @@
 package com.mWebApp.model;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 public class Mood {
 	

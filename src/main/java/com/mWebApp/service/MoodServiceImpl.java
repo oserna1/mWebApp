@@ -1,6 +1,6 @@
 package com.mWebApp.service;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -44,6 +44,8 @@ public class MoodServiceImpl  implements MoodService{
 	}
 	
 	public void saveMood(Mood mood) {
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		mood.setTs(timestamp);
 		mood.setId(counter.incrementAndGet());
 		moods.add(mood);
 	}
@@ -93,6 +95,7 @@ public class MoodServiceImpl  implements MoodService{
 		moods.add(new Mood(counter.incrementAndGet(),5, "meh", null, (long) 1));
 		return moods;
 	}
+
 
 
 }

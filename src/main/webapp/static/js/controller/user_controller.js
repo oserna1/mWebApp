@@ -3,8 +3,8 @@
 	'use strict';
 
 	angular.module('myApp').controller('UserController',UserController); 
-	UserController.$inject = ['UserService'];
-	function UserController (UserService) {
+	UserController.$inject = ['$scope','UserService'];
+	function UserController ($scope,UserService) {
 	    var self = this;
 	    self.user={id:null,username:'',email:'', password:''};
 	    self.users=[];
@@ -97,7 +97,7 @@
 	
 	    function reset(){
 	        self.user={id:null,username:'',email:'',password:''};
-	        myForm.$setPristine(); //reset Form
+	        $scope.myForm.$setPristine(); //reset Form
 	    }
 	}
 })();

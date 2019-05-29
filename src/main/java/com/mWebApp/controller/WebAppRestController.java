@@ -149,14 +149,11 @@ public class WebAppRestController {
     
     @RequestMapping(value = "/track/", method = RequestMethod.POST)
     public ResponseEntity<Void> createMood(@RequestBody Mood mood,    UriComponentsBuilder ucBuilder) {
-        System.out.println("Creating User " + mood.getDescription());
- 
-        if (moodService.isMoodExist(mood)) {
-            System.out.println("A mood with description " + mood.getDescription() + " already exist");
-            return new ResponseEntity<Void>(HttpStatus.CONFLICT);
-        }
- 
+        
         moodService.saveMood(mood);
+        
+        System.out.println("Creating Mood with description: " + mood.getDescription() + " and user id: " + mood.getuId()
+        + " mood id: " + mood.getId() + " mood timestamp: " + mood.getTs());
  
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/track/{id}").buildAndExpand(mood.getId()).toUri());

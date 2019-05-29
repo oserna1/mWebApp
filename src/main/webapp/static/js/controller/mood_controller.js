@@ -3,8 +3,8 @@
 	'use strict';
 
 	angular.module('myApp').controller('MoodController',MoodController); 
-	MoodController.$inject = ['MoodService','UserService'];
-	function MoodController (MoodService, UserService) {
+	MoodController.$inject = ['$scope','MoodService','UserService'];
+	function MoodController ($scope,MoodService, UserService) {
 	    var self = this;
 	    self.mood={id:null,moodRange:null,description:'', ts:null, uId: null};
 	    self.moods=[];
@@ -18,8 +18,8 @@
 	
 	    
 	
-	    function fetchMoodsByUid(id){
-	        MoodService.fetchAllMoods(id)
+	    function fetchMoodsByUid(){
+	        MoodService.fetchAllMoods(UserService.uId)
 	            .then(
 	            function(d) {
 	                self.moods = d.data;
@@ -42,33 +42,34 @@
 	    }
 	
 	    function createMood(mood){
+	    	self.mood.uId = UserService.uId;
 	        MoodService.createMood(mood)
-	            .then(
-	            fetchMoodsByUid(),
-	            function(errResponse){
+	            .then((response) => {
+	            	fetchMoodsByUid();
+	            })
+	            .catch((errResponse) => {
 	                console.error('Error while creating Mood');
-	            }
-	        );
+	            });
 	    }
 	
-	    function updateMood(mood, id, uid){
+	    function updateMood(mood, id){
 	        MoodService.updateMood(mood, id)
-	            .then(
-	            fetchMoodsByUid(uid),
-	            function(errResponse){
+	            .then((response) => {
+	            	fetchMoodsByUid();
+	            })
+	            .catch((errResponse) => {
 	                console.error('Error while updating Mood');
-	            }
-	        );
+	            });
 	    }
 	
-	    function deleteMood(id,uid){
+	    function deleteMood(id){
 	        MoodService.deleteMood(id)
-	            .then(
-	            fetchMoodsByUid(uid),
-	            function(errResponse){
+	            .then((response) => {
+	            	fetchMoodsByUid();
+	    		})
+	            .catch((errResponse) => {
 	                console.error('Error while deleting Mood');
-	            }
-	        );
+	            });
 	    }
 	
 	    function submit() {
@@ -92,18 +93,18 @@
 	        }
 	    }
 	
-	    function remove(id,uid){
+	    function remove(id){
 	        console.log('id to be deleted', id);
 	        if(self.mood.id === id) {//clean form if the mood to be deleted is shown there.
 	            reset();
 	        }
-	        deleteMood(id,uid);
+	        deleteMood(id);
 	    }
 	
 	
 	    function reset(){
 	    	self.mood={id:null,moodRange:null,description:'', ts:null, uId: null};
-	        myForm.$setPristine(); //reset Form
+	    	$scope.myForm.$setPristine(); //reset Form
 	    } 
 	}
 })();

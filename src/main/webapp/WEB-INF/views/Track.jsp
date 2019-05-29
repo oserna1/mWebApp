@@ -9,7 +9,7 @@
 					Users
 				</button>
 				<div class="dropdown-menu">
-					<div ng-repeat="u in ctrl.users" ng-click="mctrl.fetchMoodsByUid(u.id)">
+					<div ng-repeat="u in ctrl.users" ng-click="ctrl.selectedId(u.id); mctrl.fetchMoodsByUid()">
 						<p ng-bind="u.username" class="dropdown-item"></p>
 					</div>
 				</div>	
@@ -79,7 +79,7 @@
                               <td><span ng-bind="m.ts"></span></td>
                               <td><span ng-bind="m.uId"></span></td>
                               <td>
-                              <button type="button" ng-click="mctrl.edit(m.id)" class="btn btn-success custom-width">Edit</button>  <button type="button" ng-click="mctrl.remove(m.id, m.uId)" class="btn btn-danger custom-width">Remove</button>
+                              <button type="button" ng-click="mctrl.edit(m.id)" class="btn btn-success custom-width">Edit</button>  <button type="button" ng-click="mctrl.remove(m.id)" class="btn btn-danger custom-width">Remove</button>
                               </td>
                           </tr>
                       </tbody>

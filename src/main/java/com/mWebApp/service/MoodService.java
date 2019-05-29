@@ -1,6 +1,6 @@
 package com.mWebApp.service;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 import java.util.List;
 
 import com.mWebApp.model.Mood;

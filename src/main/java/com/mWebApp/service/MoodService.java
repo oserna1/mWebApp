@@ -12,7 +12,7 @@ public interface MoodService {
 	
 	void saveMood(Mood mood);
 	
-	void updateMood(Mood mood);
+	void updateMood(Mood currentMood, Mood mood);
 	
 	void deleteMoodById(long id);
 

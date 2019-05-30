@@ -24,12 +24,7 @@
                           <div class="form-group col-md-12">
                               <label class="col-md-2 control-lable" for="file">MoodRange</label>
                               <div class="col-md-7">
-                                  <input type="text" ng-model="mctrl.mood.moodRange" name="range" class="range form-control input-sm" placeholder="Enter mood rating" required ng-minlength="3"/>
-                                  <div class="has-error" ng-show="myForm.$dirty">
-                                      <span ng-show="myForm.uname.$error.required">This is a required field</span>
-                                      <span ng-show="myForm.uname.$error.minlength">Minimum length required is 3</span>
-                                      <span ng-show="myForm.uname.$invalid">This field is invalid </span>
-                                  </div>
+                                  <input type="text" ng-model="mctrl.mood.moodRange" name="range" class="range form-control input-sm" placeholder="Enter mood rating" required/>
                               </div>
                           </div>
                       </div>
@@ -40,8 +35,6 @@
                               <div class="col-md-7">
                                   <input type="text" ng-model="mctrl.mood.description" name="description" class="description form-control input-sm" placeholder="Enter description" required/>
                                   <div class="has-error" ng-show="myForm.$dirty">
-                                      <span ng-show="myForm.description.$error.required">This is a required field</span>
-                                      <span ng-show="myForm.description.$invalid">This field is invalid </span>
                                   </div>
                               </div>
                           </div>

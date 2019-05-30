@@ -50,9 +50,12 @@ public class MoodServiceImpl  implements MoodService{
 		moods.add(mood);
 	}
 	
-	public void updateMood(Mood mood) {
-		int index = moods.indexOf(mood);
-		moods.set(index, mood);
+	public void updateMood(Mood currentMood, Mood mood) {
+		int index = moods.indexOf(currentMood);
+		moods.set(index, currentMood);
+		currentMood.setMoodRange(mood.getMoodRange());
+        currentMood.setDescription(mood.getDescription());
+        currentMood.setTs(mood.getTs());
 	}
 	
 	public void deleteMoodById(long id) {
@@ -73,10 +76,10 @@ public class MoodServiceImpl  implements MoodService{
 		moods.clear();
 	}
 	
-	public List<Mood> findByUid(long id) {
+	public List<Mood> findByUid(long uid) {
 		List<Mood> MoodsUid = new ArrayList<Mood>();
 		for(Mood mood: moods) {
-			if(mood.getuId()==id) {
+			if(mood.getuId()==uid) {
 				MoodsUid.add(mood);
 			}
 		}

@@ -16,10 +16,10 @@ import com.mWebApp.service.UserService;
 public class WebAppController {
 	
 	@Autowired
-    UserService userService;
+    private UserService userService;
 	
 	@RequestMapping(value = "/login/" , method=RequestMethod.GET)
-	public String login(@ModelAttribute(name="user") User User) {
+	public String login() {
 		return "Login";
 	}
 	
@@ -37,12 +37,12 @@ public class WebAppController {
 	}
 	
 	@RequestMapping(value = "/track/" , method=RequestMethod.GET)
-	public String Track(@ModelAttribute(name="user") User user) {
+	public String track() {
 		return "Track";
 	}
 	
 	@RequestMapping(value = "/admin/" , method=RequestMethod.GET)
-	public String userAdmin(@ModelAttribute(name="user") User user) {
+	public String userAdmin() {
 		return "Admin";
 	}
 

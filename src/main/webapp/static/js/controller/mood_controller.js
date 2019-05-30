@@ -20,14 +20,12 @@
 	
 	    function fetchMoodsByUid(){
 	        MoodService.fetchAllMoods(UserService.uId)
-	            .then(
-	            function(d) {
+	            .then((d)=>{
 	                self.moods = d.data;
-	            },
-	            function(errResponse){
+	            })
+	            .catch((errResponse) => {
 	                console.error(errResponse);
-	            }
-	        );
+	            });
 	    } 
 	    
 	    function submit() {
@@ -70,17 +68,6 @@
 	            .catch((errResponse) => {
 	                console.error('Error while deleting Mood');
 	            });
-	    }
-	
-	    function submit() {
-	        if(self.mood.id===null){
-	            console.log('Saving New Mood', self.mood);
-	            createMood(self.mood);
-	        }else{
-	            updateMood(self.mood, self.mood.id);
-	            console.log('Mood updated with id ', self.mood.id);
-	        }
-	        reset();
 	    }
 	
 	    function edit(id){

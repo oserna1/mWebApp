@@ -14,11 +14,8 @@ public class UserServiceImpl implements UserService{
 	
 	private static final AtomicLong counter = new AtomicLong();
 	
-	private static List<User> users;
+	private static List<User> users= populateDummyUsers();
 	
-	static{
-		users= populateDummyUsers();
-	}
 
 	public List<User> findAllUsers() {
 		return users;
@@ -47,9 +44,12 @@ public class UserServiceImpl implements UserService{
 		users.add(user);
 	}
 
-	public void updateUser(User user) {
-		int index = users.indexOf(user);
-		users.set(index, user);
+	public void updateUser(User currentUser, User user) {
+		int index = users.indexOf(currentUser);
+		users.set(index, currentUser);
+		currentUser.setUsername(user.getUsername());
+		currentUser.setPassword(user.getPassword());
+        currentUser.setEmail(user.getEmail());
 	}
 
 	public void deleteUserById(long id) {

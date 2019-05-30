@@ -20,24 +20,23 @@
 	
 	    function fetchAllUsers(){
 	        UserService.fetchAllUsers()
-	            .then(
-	            function(d) {
+	            .then((d) => {
 	                self.users = d.data;
-	            },
-	            function(errResponse){
+	            })
+	            .catch((errResponse) => {
 	                console.error('Error while fetching Users');
-	            }
-	        );
+	            });
 	    } 
 	
 	    function createUser(user){
 	        UserService.createUser(user)
-	            .then(
-	            fetchAllUsers,
-	            function(errResponse){
+	            .then((response) => {
+	            	console.log(response.data);
+	            	fetchAllUsers();
+	            })
+	            .catch((errResponse) => {
 	                console.error('Error while creating User');
-	            }
-	        );
+	            });
 	    }
 	    
 	    function selectedId(id){
@@ -47,22 +46,22 @@
 	
 	    function updateUser(user, id){
 	        UserService.updateUser(user, id)
-	            .then(
-	            fetchAllUsers,
-	            function(errResponse){
+	            .then((response) => {
+	            	fetchAllUsers();
+	            })
+	            .catch((errResponse) => {
 	                console.error('Error while updating User');
-	            }
-	        );
+	            });
 	    }
 	
 	    function deleteUser(id){
 	        UserService.deleteUser(id)
-	            .then(
-	            fetchAllUsers,
-	            function(errResponse){
+	            .then((response) => {
+	            	fetchAllUsers();
+	            })
+	            .catch((errResponse) => {
 	                console.error('Error while deleting User');
-	            }
-	        );
+	            });
 	    }
 	
 	    function submit() {
@@ -88,7 +87,7 @@
 	
 	    function remove(id){
 	        console.log('id to be deleted', id);
-	        if(self.user.id === id) {//clean form if the user to be deleted is shown there.
+	        if(self.user.id === id) {
 	            reset();
 	        }
 	        deleteUser(id);
@@ -97,7 +96,7 @@
 	
 	    function reset(){
 	        self.user={id:null,username:'',email:'',password:''};
-	        $scope.myForm.$setPristine(); //reset Form
+	        $scope.myForm.$setPristine(); 
 	    }
 	}
 })();

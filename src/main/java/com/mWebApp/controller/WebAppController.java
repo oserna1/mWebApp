@@ -19,7 +19,7 @@ public class WebAppController {
     private UserService userService;
 	
 	@RequestMapping(value = "/login/" , method=RequestMethod.GET)
-	public String login() {
+	public String login(@ModelAttribute (name="user") User user) {
 		return "Login";
 	}
 	
